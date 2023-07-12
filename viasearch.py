@@ -33,7 +33,14 @@ options = [
 combobox = ttk.Combobox(win, values=options)
 combobox.pack()
 
-driver = webdriver.Chrome()
+
+def stop_app():
+    win.destroy()
+def delay(waiting_time=5):
+    driver = webdriver.Chrome()
+    driver.implicitly_wait(waiting_time)
+stop_duration = 5000
+
 def open_website():
 
             #-------------------------------------------------------------------------------
@@ -52,7 +59,7 @@ def open_website():
                 for line in csv_reader:
 
 
-                    # driver = webdriver.Chrome()
+                    driver = webdriver.Chrome()
                     driver.get('https://viesearch.com/submit')
                     driver.maximize_window()
                     time.sleep(5)
@@ -93,6 +100,7 @@ def open_website():
                     submit = driver.find_elements(By.XPATH, '/html/body/center/div/div[2]/div/div[4]/form/div[10]/div[2]/button')
                     submit[0].click()
                     print("completed")
+                    win.after(stop_duration, stop_app)
 
 button = ttk.Button(win, text="Open Website", command=open_website)
 button.pack()

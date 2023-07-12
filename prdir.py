@@ -34,7 +34,13 @@ options = [
 combobox = ttk.Combobox(win, values=options)
 combobox.pack()
 
-driver = webdriver.Chrome()
+
+def stop_app():
+    win.destroy()
+def delay(waiting_time=5):
+    driver = webdriver.Chrome()
+    driver.implicitly_wait(waiting_time)
+stop_duration = 5000
 
 def open_website():
 
@@ -43,18 +49,19 @@ def open_website():
             Username = 0
             Email = 1
             URL = 2
-
+            anti = " 4"
             with open('data.csv', 'r') as csv_file:
 
                 csv_reader = csv.reader(csv_file)
 
             #-------------------------------------------------------------------------------
             # Web Automation
+            
 
                 for line in csv_reader:
 
 
-                    # driver = webdriver.Chrome()
+                    driver = webdriver.Chrome()
                     driver.get('http://prdirectory.com.ar/submit.php')
                     driver.maximize_window()
                     time.sleep(5)
@@ -96,9 +103,15 @@ def open_website():
 
 
                    
-                    freelink = driver.find_element("xpath", '/html/body/center/div/div[2]/div/div[4]/form/div[7]/div[2]/div[7]/input')
-                    freelink.click()
-                    time.sleep(5)
+                    # freelink = driver.find_element("xpath", '/html/body/center/div/div[2]/div/div[4]/form/div[7]/div[2]/div[7]/input')
+                    # freelink.click()
+                    # time.sleep(5)
+                    Anti = driver.find_elements(By.XPATH, '//*[@id="Anti_Spam_Field"]')
+                    Anti[0].send_keys(anti)
+                    print('ok')
+                    #time.sleep(5)
+
+                    time.sleep(10)
 
                     agree = driver.find_elements(By.NAME, 'AGREERULES')
                     agree[0].click()
@@ -107,6 +120,8 @@ def open_website():
                     submit = driver.find_elements(By.XPATH, '//*[@id="submitForm"]/table/tbody/tr[12]/td/input')
                     submit[0].click()
                     print("completed")
+                    win.after(stop_duration, stop_app)
+                    
 
 
 button = ttk.Button(win, text="Open Website", command=open_website)

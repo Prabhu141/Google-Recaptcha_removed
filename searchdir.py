@@ -34,7 +34,13 @@ options = [
 combobox = ttk.Combobox(win, values=options)
 combobox.pack()
 
-driver = webdriver.Chrome()
+
+def stop_app():
+    win.destroy()
+def delay(waiting_time=5):
+    driver = webdriver.Chrome()
+    driver.implicitly_wait(waiting_time)
+stop_duration = 5000
 
 def open_website():
             Username = 0
@@ -51,7 +57,7 @@ def open_website():
                 for line in csv_reader:
 
 
-                    # driver = webdriver.Chrome()
+                    driver = webdriver.Chrome()
                     driver.get('http://searchdirectory.info/submit.php')
                     driver.maximize_window()
                     #time.sleep(5)
@@ -62,8 +68,6 @@ def open_website():
                     selected_option = combobox.get()  # Get the selected option from the combobox
                     drp.select_by_visible_text(selected_option)
                     time.sleep(4)
-
-
 
 
                     submit = driver.find_elements(By.XPATH, '//*[@id="ok"]')
@@ -93,10 +97,14 @@ def open_website():
                     Email_field.send_keys(line[1])
                     time.sleep(3)
 
-                   
+                    agree = driver.find_elements(By.NAME, 'AGREERULES')
+                    agree[0].click()
+                    time.sleep(10)
+
                     submit = driver.find_elements(By.XPATH, '/html/body/div[1]/div[1]/div/form/table/tbody/tr[8]/td/input')
                     submit[0].click()
                     print("completed")
+                    win.after(stop_duration, stop_app)
 
 
 
