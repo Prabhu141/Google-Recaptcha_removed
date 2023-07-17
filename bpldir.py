@@ -13,8 +13,8 @@ from datetime import datetime
 
 
 win = tk.Tk()
-win.minsize(800, 600)
-win.title("Maximized Window")
+# win.minsize(800, 600)
+# win.title("Maximized Window")
 
 # Maximize the window
 win.attributes("-alpha", True)
@@ -101,9 +101,9 @@ def open_website():
 
                     Email_field = driver.find_element("xpath", '//*[@id="OWNER_EMAIL"]')
                     Email_field.send_keys(line[1])
-                    time.sleep(3)
+                    
 
-                    time.sleep(10)
+                    time.sleep(40)
                     agree = driver.find_elements(By.NAME, 'AGREERULES')
                     agree[0].click()
                     time.sleep(5)

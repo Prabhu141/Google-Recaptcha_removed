@@ -16,8 +16,8 @@ from datetime import datetime
 
 
 win = tk.Tk()
-win.minsize(800, 600)
-win.title("Maximized Window")
+# win.minsize(800, 600)
+# win.title("Maximized Window")
 
 # Maximize the window
 win.attributes("-alpha", True)
@@ -52,7 +52,7 @@ def open_website():
             Email = 1
             URL = 2
 
-            with open('data1.csv', 'r') as csv_file:
+            with open('data.csv', 'r') as csv_file:
 
                 csv_reader = csv.reader(csv_file)
 
@@ -93,9 +93,8 @@ def open_website():
                     drp = Select(element[0])
                     selected_option = combobox.get()  # Get the selected option from the combobox
                     drp.select_by_visible_text(selected_option)
-                    time.sleep(4)
+                    time.sleep(40)
 
-                    time.sleep(10)
                     submit = driver.find_elements(By.XPATH, '//*[@id="content"]/form/table/tbody/tr[8]/td/input')
                     submit[0].click()
                     win.after(stop_duration, stop_app)

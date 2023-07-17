@@ -11,8 +11,8 @@ from selenium.webdriver.common.keys import Keys
 
 
 win = tk.Tk()
-win.minsize(800, 600)
-win.title("Maximized Window")
+# win.minsize(800, 600)
+# win.title("Maximized Window")
 
 # Maximize the window
 win.attributes("-alpha", True)
@@ -91,9 +91,9 @@ def open_website():
                     drp = Select(element[0])
                     selected_option = combobox.get()  # Get the selected option from the combobox
                     drp.select_by_visible_text(selected_option)
-                    time.sleep(5)
+                    
 
-                    time.sleep(10)
+                    time.sleep(30)
                     submit = driver.find_elements(By.XPATH, '/html/body/div[1]/div[1]/div/form/table/tbody/tr[8]/td/input')
                     submit[0].click()
                     print("completed")

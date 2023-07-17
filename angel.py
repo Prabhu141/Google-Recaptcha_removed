@@ -10,8 +10,8 @@ from selenium.webdriver.common.keys import Keys
 
 
 win = tk.Tk()
-win.minsize(800, 600)
-win.title("Maximized Window")
+# win.minsize(400, 400)
+# win.title("Maximized Window")
 
 # Maximize the window
 win.attributes("-alpha", True)
@@ -91,7 +91,7 @@ def open_website():
                     selected_option = combobox.get()  # Get the selected option from the combobox
                     drp.select_by_visible_text(selected_option)
                     
-                    time.sleep(10)
+                    time.sleep(30)
                     agree = driver.find_elements(By.NAME, 'agree')
                     agree[0].click()
                     time.sleep(7)

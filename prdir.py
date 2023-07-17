@@ -13,8 +13,8 @@ from datetime import datetime
 
 
 win = tk.Tk()
-win.minsize(800, 600)
-win.title("Maximized Window")
+# win.minsize(800, 600)
+# win.title("Maximized Window")
 
 # Maximize the window
 win.attributes("-alpha", True)

@@ -11,8 +11,8 @@ from selenium.webdriver.common.keys import Keys
 
 
 win = tk.Tk()
-win.minsize(800, 600)
-win.title("Maximized Window")
+# win.minsize(800, 600)
+# win.title("Maximized Window")
 
 # Maximize the window
 win.attributes("-alpha", True)
@@ -95,8 +95,8 @@ def open_website():
                    
                     freelink = driver.find_element("xpath", '/html/body/center/div/div[2]/div/div[4]/form/div[7]/div[2]/div[7]/input')
                     freelink.click()
-                    time.sleep(5)
-
+                    
+                    time.sleep(4)
                     submit = driver.find_elements(By.XPATH, '/html/body/center/div/div[2]/div/div[4]/form/div[10]/div[2]/button')
                     submit[0].click()
                     print("completed")
