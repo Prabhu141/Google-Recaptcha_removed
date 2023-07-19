@@ -47,7 +47,7 @@ def open_website():
             Email = 1
             URL = 2
 
-            with open('data1.csv', 'r') as csv_file:
+            with open('data.csv', 'r') as csv_file:
 
                 csv_reader = csv.reader(csv_file)
 
@@ -95,13 +95,13 @@ def open_website():
 
                     Email_field = driver.find_element("xpath", '//*[@id="OWNER_EMAIL"]')
                     Email_field.send_keys(line[1])
-                    time.sleep(30)
+                    time.sleep(10)
 
                     agree = driver.find_elements(By.NAME, 'AGREERULES')
                     agree[0].click()
                     time.sleep(10)
 
-                    submit = driver.find_elements(By.XPATH, '/html/body/div[1]/div[1]/div/form/table/tbody/tr[8]/td/input')
+                    submit = driver.find_elements(By.XPATH, '//*[@id="submitForm"]/table/tbody/tr[11]/td/input')
                     submit[0].click()
                     print("completed")
                     win.after(stop_duration, stop_app)

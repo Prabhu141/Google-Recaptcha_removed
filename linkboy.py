@@ -91,10 +91,10 @@ def open_website():
                     drp = Select(element[0])
                     selected_option = combobox.get()  # Get the selected option from the combobox
                     drp.select_by_visible_text(selected_option)
-                    time.sleep(40)
+                    time.sleep(30)
                     
-                    submit = driver.find_elements(By.XPATH, '//*[@id="content"]/form/table/tbody/tr[8]/td/input')
-                    submit[0].click()
+                    # submit = driver.find_elements(By.XPATH, '//*[@id="content"]/form/table/tbody/tr[8]/td/input')
+                    # submit[0].click()
                     print("completed")
                     win.after(stop_duration, stop_app)
 
